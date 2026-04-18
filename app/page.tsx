@@ -17,8 +17,9 @@ function makeLog(message: string, type: LogEntry['type'] = 'info'): LogEntry {
   };
 }
 
+const EDGE_FUNCTION_URL = 'https://fkdwhiwlxnrxxkirtzjj.supabase.co/functions/v1/scrape-proxy';
+
 export default function HomePage() {
-  const [targetUrl, setTargetUrl] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [isRunning, setIsRunning] = useState(false);
@@ -31,25 +32,18 @@ export default function HomePage() {
   }, []);
 
   const handleRun = useCallback(async () => {
-    const edgeFunctionUrl = process.env.NEXT_PUBLIC_EDGE_FUNCTION_URL;
-    if (!edgeFunctionUrl) {
-      setError('NEXT_PUBLIC_EDGE_FUNCTION_URL is not configured.');
-      return;
-    }
-
     setIsRunning(true);
     setLogs([]);
     setResults([]);
     setError(null);
 
     appendLog('Initiating workflow session...', 'info');
-    appendLog(`Target: ${targetUrl}`, 'info');
 
     try {
-      const response = await fetch(edgeFunctionUrl, {
+      const response = await fetch(EDGE_FUNCTION_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ targetUrl, username, password }),
+        body: JSON.stringify({ username, password }),
       });
 
       if (!response.ok || !response.body) {
@@ -115,7 +109,7 @@ export default function HomePage() {
     } finally {
       setIsRunning(false);
     }
-  }, [targetUrl, username, password, appendLog]);
+  }, [username, password, appendLog]);
 
   return (
     <div className="min-h-screen bg-zinc-950 text-white">
@@ -153,14 +147,12 @@ export default function HomePage() {
         <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-8 space-y-6 shadow-xl">
           <div className="flex items-center gap-2 pb-1 border-b border-zinc-800">
             <span className="text-sm font-semibold text-zinc-200">Configuration</span>
-            <span className="ml-auto text-xs text-zinc-600">All fields required</span>
+            <span className="ml-auto text-xs text-zinc-600">Enter your CICA credentials</span>
           </div>
           <ScraperForm
-            targetUrl={targetUrl}
             username={username}
             password={password}
             isRunning={isRunning}
-            onTargetUrlChange={setTargetUrl}
             onUsernameChange={setUsername}
             onPasswordChange={setPassword}
             onSubmit={handleRun}
