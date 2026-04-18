@@ -40,11 +40,14 @@ export default function HomePage() {
     appendLog('Initiating workflow session...', 'info');
 
     try {
-      const response = await fetch(EDGE_FUNCTION_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password }),
-      });
+const response = await fetch(EDGE_FUNCTION_URL, {
+  method: 'POST',
+  headers: {
+    'Content-Type': 'application/json',
+    'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImZrZHdoaXdseG5yeHhraXJ0empqIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzA0MjYyMjgsImV4cCI6MjA4NjAwMjIyOH0.OpuQ5TQSzLPREc-UJEaHU6GadFr2PseuBxbpn2D_mcY',
+  },
+  body: JSON.stringify({ username, password }),
+});
 
       if (!response.ok || !response.body) {
         const errText = await response.text().catch(() => `HTTP ${response.status}`);
