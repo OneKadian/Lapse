@@ -115,42 +115,42 @@ const response = await fetch(EDGE_FUNCTION_URL, {
   }, [username, password, appendLog]);
 
   return (
-    <div className="min-h-screen bg-zinc-950 text-white">
-      <div className="border-b border-zinc-800/60 bg-zinc-900/40 backdrop-blur-sm sticky top-0 z-10">
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 to-slate-100">
+      <div className="border-b border-slate-200 bg-slate-800 sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center gap-3">
-          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-sky-600/20 border border-sky-600/30">
-            <Shield className="w-4 h-4 text-sky-400" />
+          <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-white">
+            <Shield className="w-4 h-4 text-slate-800" />
           </div>
           <div>
             <h1 className="text-base font-bold text-white leading-none">LapseGuard</h1>
-            <p className="text-xs text-zinc-500 mt-0.5">Insurance Policy Arrears Monitor</p>
+            <p className="text-xs text-slate-300 mt-0.5">Insurance Policy Arrears Monitor</p>
           </div>
           <div className="ml-auto flex items-center gap-1.5">
-            <Activity className="w-3.5 h-3.5 text-zinc-600" />
-            <span className="text-xs text-zinc-600">CICA Portal</span>
+            <Activity className="w-3.5 h-3.5 text-slate-300" />
+            <span className="text-xs text-slate-300">CICA Portal</span>
           </div>
         </div>
       </div>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 space-y-8">
         <div className="text-center space-y-2 pb-2">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-sky-800/50 bg-sky-900/20 text-sky-400 text-xs font-medium mb-3">
-            <span className="w-1.5 h-1.5 rounded-full bg-sky-400" />
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-slate-800/50 bg-slate-800/10 text-slate-700 text-xs font-medium mb-3">
+            <span className="w-1.5 h-1.5 rounded-full bg-slate-700" />
             Workflow Control Panel
           </div>
-          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-white">
+          <h2 className="text-3xl sm:text-4xl font-bold tracking-tight text-slate-900">
             Policy Arrears Monitor
           </h2>
-          <p className="text-zinc-400 text-sm sm:text-base max-w-xl mx-auto">
+          <p className="text-slate-600 text-sm sm:text-base max-w-xl mx-auto">
             Authenticate with the CICA portal and extract policies flagged for arrears or potential
             lapse in real time.
           </p>
         </div>
 
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-8 space-y-6 shadow-xl">
-          <div className="flex items-center gap-2 pb-1 border-b border-zinc-800">
-            <span className="text-sm font-semibold text-zinc-200">Configuration</span>
-            <span className="ml-auto text-xs text-zinc-600">Enter your CICA credentials</span>
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 space-y-6 shadow-lg">
+          <div className="flex items-center gap-2 pb-4 border-b border-slate-200 bg-gradient-to-r from-slate-800 to-slate-700 -m-6 mb-6 px-6 py-4 rounded-t-2xl">
+            <span className="text-sm font-semibold text-white">Configuration</span>
+            <span className="ml-auto text-xs text-slate-200">Enter your CICA credentials</span>
           </div>
           <ScraperForm
             username={username}
@@ -163,7 +163,7 @@ const response = await fetch(EDGE_FUNCTION_URL, {
         </div>
 
         {error && !isRunning && (
-          <div className="flex items-start gap-3 rounded-xl border border-red-800/50 bg-red-950/20 px-4 py-3 text-sm text-red-400">
+          <div className="flex items-start gap-3 rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm text-red-700">
             <AlertCircle className="w-4 h-4 mt-0.5 shrink-0" />
             <span>{error}</span>
           </div>
@@ -172,23 +172,23 @@ const response = await fetch(EDGE_FUNCTION_URL, {
         {(logs.length > 0 || isRunning) && (
           <div className="space-y-2">
             <div className="flex items-center gap-2">
-              <span className="text-sm font-semibold text-zinc-300">Live Log</span>
+              <span className="text-sm font-semibold text-slate-900">Live Log</span>
             </div>
             <LogPanel logs={logs} isRunning={isRunning} />
           </div>
         )}
 
         {results.length > 0 && (
-          <div className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-6 sm:p-8 shadow-xl">
+          <div className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8 shadow-lg">
             <ResultsTable records={results} />
           </div>
         )}
       </main>
 
-      <footer className="border-t border-zinc-800/60 mt-20">
+      <footer className="border-t border-slate-200 mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 py-6 flex items-center justify-between">
-          <span className="text-xs text-zinc-600">LapseGuard — Internal Tool</span>
-          <span className="text-xs text-zinc-700">Data is not stored</span>
+          <span className="text-xs text-slate-600">LapseGuard — Internal Tool</span>
+          <span className="text-xs text-slate-600">Data is not stored</span>
         </div>
       </footer>
     </div>

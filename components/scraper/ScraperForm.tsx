@@ -23,8 +23,8 @@ export function ScraperForm({
     <div className="space-y-4">
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div className="space-y-1.5">
-          <label className="text-sm font-medium text-zinc-300 flex items-center gap-1.5">
-            <User className="w-3.5 h-3.5 text-zinc-500" />
+          <label className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
+            <User className="w-3.5 h-3.5 text-slate-500" />
             Username
           </label>
           <input
@@ -34,13 +34,13 @@ export function ScraperForm({
             placeholder="agent@example.com"
             disabled={isRunning}
             autoComplete="username"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-800/50 focus:border-slate-800/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
 
         <div className="space-y-1.5">
-          <label className="text-sm font-medium text-zinc-300 flex items-center gap-1.5">
-            <Lock className="w-3.5 h-3.5 text-zinc-500" />
+          <label className="text-sm font-medium text-slate-700 flex items-center gap-1.5">
+            <Lock className="w-3.5 h-3.5 text-slate-500" />
             Password
           </label>
           <input
@@ -50,7 +50,7 @@ export function ScraperForm({
             placeholder="••••••••"
             disabled={isRunning}
             autoComplete="current-password"
-            className="w-full rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2.5 text-sm text-zinc-100 placeholder:text-zinc-600 focus:outline-none focus:ring-2 focus:ring-sky-500/50 focus:border-sky-500/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full rounded-lg border border-slate-300 bg-slate-50 px-4 py-2.5 text-sm text-slate-900 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-800/50 focus:border-slate-800/50 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
           />
         </div>
       </div>
@@ -58,7 +58,7 @@ export function ScraperForm({
       <button
         onClick={onSubmit}
         disabled={isRunning || !username || !password}
-        className="w-full flex items-center justify-center gap-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 disabled:bg-zinc-700 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 transition-all duration-200 shadow-lg shadow-sky-900/30 hover:shadow-sky-800/40 text-sm"
+        className="w-full flex items-center justify-center gap-2.5 rounded-lg bg-slate-800 hover:bg-slate-700 disabled:bg-slate-300 disabled:cursor-not-allowed text-white font-semibold py-3 px-6 transition-all duration-200 shadow-lg shadow-slate-900/20 hover:shadow-slate-900/30 text-sm"
       >
         {isRunning ? (
           <>
